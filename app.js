@@ -1,5 +1,4 @@
 import Notes from './notes.js'
-import chalk from 'chalk'
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
@@ -25,7 +24,7 @@ yarg.command({
             type: 'string'
         }
     },
-    handler: function (argv) {
+    handler(argv) {
         Notes.addNote(argv.title,argv.body)
     }
 }).command({
@@ -38,20 +37,20 @@ yarg.command({
             type: 'string'
         }
     },
-    handler: function (argv) {
+    handler(argv) {
         Notes.removeNote(argv.title)
     }
 }).command({
     command: 'read',
     description: 'Read a note',
-    handler: function () {
+    handler() {
         console.log('Reading the note!')
     }
 }).command({
     command: 'list',
     description: 'List the notes',
-    handler: function () {
-        console.log('Listing the notes!')
+    handler() {
+        Notes.listNotes()
     }
 })
 

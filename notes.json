@@ -1,14 +1,1 @@
-[
-    {
-        "title": "Fruits",
-        "body": "['Apple','Oranges','Banana']"
-    },
-    {
-        "title": "Vegetables",
-        "body": "['Potato','Onion','Brinjal']"
-    },
-    {
-        "title": "BodyWear",
-        "body": "['Shirts','Pants','Socks','Shoes']"
-    }
-]
+[{"title":"Fruits","body":"['Apple','Oranges','Banana']"},{"title":"Vegetables","body":"['Potato','Onion','Brinjal']"},{"title":"BodyWear","body":"['Shirts','Pants','Socks','Shoes']"}]
