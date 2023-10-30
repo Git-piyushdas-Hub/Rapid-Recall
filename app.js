@@ -43,8 +43,15 @@ yarg.command({
 }).command({
     command: 'read',
     description: 'Read a note',
-    handler() {
-        console.log('Reading the note!')
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: 'true',
+            type: 'string'
+        }
+    },
+    handler(argv) {
+        Notes.readNotes(argv.title)
     }
 }).command({
     command: 'list',

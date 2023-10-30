@@ -1,8 +1,6 @@
 import fs from 'fs'
 import chalk from 'chalk'
 
-const getNotes = () => 'Your Notes...'
-
 const addNote = (title,body) => {
     const notes = loadNotes()
     const duplicateNote = notes.find( (note)=> note.title == title)
@@ -38,8 +36,23 @@ const listNotes = () => {
     const notes = loadNotes()
     console.log(chalk.white.inverse("Your Notes..."))
     notes.forEach((note) => {
-        console.log(note)
+        console.log(note.title)
     });
+}
+
+const readNotes = (title) => {
+    const notes = loadNotes()
+    const noteFound = notes.find( (note)=> {
+        return note.title == title
+    })
+
+    if (noteFound) {
+        console.log("Title: "+ (chalk.italic(noteFound.title)))
+        console.log("Body: "+ noteFound.body)
+    }
+    else {
+        console.log(chalk.inverse.red('Note not found!'))
+    }
 }
 
 const saveNotes = (argument) => {
@@ -62,9 +75,9 @@ const loadNotes = () =>{
 
 
 export default {
-    getNotes: getNotes,
     addNote: addNote,
     removeNote: removeNote,
-    listNotes: listNotes
+    listNotes: listNotes,
+    readNotes: readNotes
 }
 
