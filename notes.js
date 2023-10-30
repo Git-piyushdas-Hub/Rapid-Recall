@@ -1,4 +1,5 @@
 import fs from 'fs'
+import chalk from 'chalk'
 
 const getNotes = () => {
     return 'Your Notes...'
@@ -9,7 +10,7 @@ const addNote = (title,body) => {
     const duplicateNotes = notes.filter( (note)=>{
         return note.title == title
     })
-
+   
     if (duplicateNotes.length === 0) {
         notes.push({
             title:title,
@@ -17,13 +18,26 @@ const addNote = (title,body) => {
         })
     
         saveNotes(notes)
-        console.log("Note added!")
+        console.log(chalk.green.inverse("New Note added!"))
     }
     else {
-        console.log("Note title taken...")
+        console.log(chalk.red.inverse("Note title taken!"))
     }
+}
 
+const removeNote = (title) => {
+    const notes = loadNotes()
+    const updatedNotes = notes.filter( (note)=> {
+        return note.title != title
+    })
     
+    if(notes.length > updatedNotes.length) {
+        saveNotes(updatedNotes)
+        console.log(chalk.green.inverse('Note Removed!'))
+    }
+    else {
+        console.log(chalk.red.inverse('No note found!'))
+    }
 }
 
 const saveNotes = (argument) => {
@@ -47,6 +61,7 @@ const loadNotes = () =>{
 
 export default {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
 
