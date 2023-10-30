@@ -1,12 +1,10 @@
 import fs from 'fs'
 import chalk from 'chalk'
 
-const getNotes = () => {
-    return 'Your Notes...'
-}
+const getNotes = () => 'Your Notes...'
 
 const addNote = (title,body) => {
-    const notes = loadNotes() 
+    const notes = loadNotes()
     const duplicateNote = notes.find( (note)=> note.title == title)
    
     if (!duplicateNote) {
